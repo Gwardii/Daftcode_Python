@@ -4,5 +4,5 @@ app = FastAPI()
 
 
 @app.get("/")
-def read_main():
+async def read_main():
     return {"message": "Hello World during the coronavirus pandemic!"}
