@@ -8,13 +8,13 @@ async def read_main():
     return {"message": "Hello World during the coronavirus pandemic!"}
 @app.get("/method/")
 async def get():
-    return {"method": "METHOD"}
+    return {"method": "GET"}
 @app.post("/method/")
 async def get():
-    return {"method": "METHOD"}
+    return {"method": "POST"}
 @app.put("/method/")
 async def get():
-    return {"method": "METHOD"}
+    return {"method": "PUT"}
 @app.delete("/method/")
 async def get():
-    return {"method": "METHOD"}
+    return {"method": "DELETE"}
