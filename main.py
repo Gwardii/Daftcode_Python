@@ -38,6 +38,6 @@ async def fun(item: Item):
 async def fun(pk: int):
     global Patients
     if pk > len(Patients):
-        raise HTTPException(status_code=404, detail="Item not found")
+        raise HTTPException(status_code=404)
     patient=Patients[pk-1]
     return patient
