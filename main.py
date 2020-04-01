@@ -1,5 +1,11 @@
 from fastapi import FastAPI
 
+class Item(BaseModel):
+    name: str
+    surename: str
+class N(BaseModel):
+    N: int = 0
+
 app = FastAPI()
 
 
@@ -18,3 +24,7 @@ async def get():
 @app.delete("/method/")
 async def get():
     return {"method": "DELETE"}
+@app.post("/patient/")
+async def fun(item: Item):
+    n.N += 1
+    return {"id": n.N, "patient": item}
