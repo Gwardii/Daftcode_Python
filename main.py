@@ -1,24 +1,26 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 class Item(BaseModel):
     name: str
     surename: str
-class N(BaseModel):
-    N: int = 0
+
 
 app = FastAPI()
-n = N()
 
+N=0
+Patients=[]
 @app.get("/")
 async def read_main():
     return {"message": "Hello World during the coronavirus pandemic!"}
 @app.get("/method/")
 async def get():
-    return {"method": "GET"}
+    a=a+2
+    return {"method": "GET","a":a}
 @app.post("/method/")
 async def get():
-    return {"method": "POST"}
+    a=2
+    return {"method": "POST","a":a}
 @app.put("/method/")
 async def get():
     return {"method": "PUT"}
@@ -27,5 +29,15 @@ async def get():
     return {"method": "DELETE"}
 @app.post("/patient/")
 async def fun(item: Item):
-    n.N += 1
-    return {"id": n.N, "patient": item}
+    global Patients
+    global N
+    N+=1
+    Patients += [item]
+    return {"id": N, "patient": item}
+@app.get("/patient/{pk}")
+async def fun(pk: int):
+    global Patients
+    if pk > len(Patients):
+        raise HTTPException(status_code=404, detail="Item not found")
+    patient=Patients[pk-1]
+    return patient
