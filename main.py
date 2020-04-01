@@ -15,12 +15,10 @@ async def read_main():
     return {"message": "Hello World during the coronavirus pandemic!"}
 @app.get("/method/")
 async def get():
-    a=a+2
-    return {"method": "GET","a":a}
+    return {"method": "GET"}
 @app.post("/method/")
 async def get():
-    a=2
-    return {"method": "POST","a":a}
+    return {"method": "POST"}
 @app.put("/method/")
 async def get():
     return {"method": "PUT"}
