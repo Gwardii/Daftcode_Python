@@ -36,6 +36,6 @@ async def fun(item: Item):
 async def fun(pk: int):
     global Patients
     if pk > len(Patients):
-        raise HTTPException(status_code=404)
+        raise HTTPException(status_code=204)
     patient=Patients[pk-1]
     return patient
