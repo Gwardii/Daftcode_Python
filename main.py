@@ -8,7 +8,7 @@ class N(BaseModel):
     N: int = 0
 
 app = FastAPI()
-
+n = N()
 
 @app.get("/")
 async def read_main():
