@@ -15,8 +15,8 @@ Patients=[]
 async def read_main():
     return {"message": "Hello World during the coronavirus pandemic!"}
 @app.get("/wel/")
-async def get(x: Request):
-    return {"message": x.headers['Cookie']}
+async def get():
+    return {"message": Patients}
 @app.post("/method/")
 async def get():
     return {"method": "POST"}
@@ -46,6 +46,7 @@ def create_cookie(response: Response):
     return {"message": "Come to the dark side, we have cookies"}
 @app.post("/login/")
 def create_cookie(request: Request, response: Response):
+    global Patients.append(request.headers['Authorization'])
     if(request.headers['Authorization']=="Basic dHJ1ZG5ZOlBhQzEzTnQ="):
         response=RedirectResponse(url='/welcome/')
         response.set_cookie(key="session", value="abcd")
