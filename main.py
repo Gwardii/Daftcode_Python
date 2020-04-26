@@ -42,7 +42,7 @@ async def fun(pk: int):
     return patient
 @app.post("/cookie-and-object/")
 def create_cookie(response: Response):
-    response.set_cookie(key="fake_session", value="fake-cookie-session-value")
+    response.set_cookie(key="session", value="fake-cookie-session-value")
     return {"message": "Come to the dark side, we have cookies"}
 @app.post("/login/")
 def create_cookie(request: Request, response: Response):
