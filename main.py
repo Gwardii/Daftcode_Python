@@ -20,7 +20,6 @@ def get_current_user(response: Response, credentials: HTTPBasicCredentials = Dep
     session_token = sha256(bytes(f"{credentials.username}{credentials.password}{app.secret_key}", encoding='utf8')).hexdigest()
     response = RedirectResponse(url='/welcome')	
     response.set_cookie(key="session_token", value=session_token)
-    response.status_code = status.HTTP_302_FOUND
     session_tokens.append(session_token)
     return response
 @app.post("/cookie-and-object/")
