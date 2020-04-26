@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Response, Request, Cookie
-from fastapi.responses import RedirectResponse
+from starlette.responses import RedirectResponse
 from pydantic import BaseModel
 class Item(BaseModel):
     name: str
