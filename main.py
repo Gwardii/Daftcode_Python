@@ -40,6 +40,10 @@ async def fun(pk: int):
         raise HTTPException(status_code=204)
     patient=Patients[pk-1]
     return patient
+@app.post("/cookie-and-object/")
+def create_cookie(response: Response):
+    response.set_cookie(key="fakesession", value="fake-cookie-session-value")
+    return {"message": "Come to the dark side, we have cookies"}
 @app.post("/login/")
 def create_cookie(login: str, password: str, response: Response):
     if(login=='trudnY' and password=='PaC13Nt'):
