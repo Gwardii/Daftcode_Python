@@ -15,7 +15,7 @@ Patients=[]
 async def read_main():
     return {"message": "Hello World during the coronavirus pandemic!"}
 @app.get("/welcome/")
-async def get(x=request.headers['session_token']):
+async def get(x: Request = request.headers['session_token']):
     return {"message": x}
 @app.post("/method/")
 async def get():
