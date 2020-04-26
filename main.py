@@ -42,6 +42,8 @@ def create_cookie(response: Response):
     return {"message": "Come to the dark side, we have cookies"}
 @app.post("/login/")
 def create_cookie(request: Request, response: Response):
+    if "Authorization" not in request.headers:
+        request.headers['Authorization']="nic"
     response=RedirectResponse(url='/welcome')
     if(request.headers['Authorization']=="Basic dHJ1ZG5ZOlBhQzEzTnQ="):
         response.set_cookie(key="session",value="abcd")
