@@ -48,12 +48,12 @@ def create_cookie(response: Response):
 def create_cookie(request: Request, response: Response):
     if(request.headers['Authorization']=="Basic dHJ1ZG5ZOlBhQzEzTnQ="):
         response=RedirectResponse(url='/welcome/')
-        response.set_cookie(key="session", value="dHJ1ZG5ZOlBhQzEzTnQ=")
+        response.set_cookie(key="session", value="abcd")
         return response
     return {"message": "Wrong login"}
 @app.post("/welcome/")
 def create_cookie(*, response: Response, session: str = Cookie(None)):
-    if (session != "dHJ1ZG5ZOlBhQzEzTnQ="):
+    if (session != "abcd"):
         raise HTTPException(status_code=401, detail="Unauthorised")
     response.set_cookie(key="session", value=session)
     
