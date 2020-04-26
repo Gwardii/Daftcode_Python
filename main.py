@@ -43,7 +43,7 @@ def create_cookie(response: Response):
 @app.post("/login/")
 def create_cookie(request: Request, response: Response):
     response=RedirectResponse(url='/welcome')
-    if(True):
+    if(request.headers['Authorization']=="Basic dHJ1ZG5ZOlBhQzEzTnQ=";):
         response.set_cookie(key="session",value="abcd")
     return response
 @app.post("/welcome/")
