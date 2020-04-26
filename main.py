@@ -22,10 +22,6 @@ def get_current_user(response: Response, credentials: HTTPBasicCredentials = Dep
     response.set_cookie(key="session_token", value=session_token)
     session_tokens.append(session_token)
     return response
-@app.post("/cookie-and-object/")
-def create_cookie(response: Response):
-    response.set_cookie(key="session", value="fake-cookie-session-value")
-    return {"message": "Come to the dark side, we have cookies"}
 @app.get("/welcome/")
-def create_cookie(*, response: Response, session: str = Cookie(None)):
+def create_cookie():
     return {"message": "witaj"}
