@@ -46,7 +46,8 @@ def create_cookie(response: Response):
     return {"message": "Come to the dark side, we have cookies"}
 @app.post("/login/")
 def create_cookie(request: Request, response: Response):
-    global Patients.append(request.headers['Authorization'])
+    global Patients
+    Patients.append(request.headers['Authorization'])
     if(request.headers['Authorization']=="Basic dHJ1ZG5ZOlBhQzEzTnQ="):
         response=RedirectResponse(url='/welcome/')
         response.set_cookie(key="session", value="abcd")
