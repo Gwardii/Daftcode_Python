@@ -16,7 +16,7 @@ async def read_main():
     return {"message": "Hello World during the coronavirus pandemic!"}
 @app.get("/welcome/")
 async def get(x: Request):
-    return {"message": x.headers['session_token']}
+    return {"message": x.headers['Cookie']}
 @app.post("/method/")
 async def get():
     return {"method": "POST"}
