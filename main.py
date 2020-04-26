@@ -46,7 +46,7 @@ def create_cookie(response: Response):
     return {"message": "Come to the dark side, we have cookies"}
 @app.post("/login/")
 def create_cookie(login: str, password: str, response: Response):
-    response.set_cookie(key="fake_session", value=f"{user}{password}")
+    response.set_cookie(key="fake_session", value=f"{login}{password}")
     if(login=='a' and password=='a'):
         return RedirectResponse(url='/welcome/')
     return {"message": "Wrong login"}
