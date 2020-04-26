@@ -53,8 +53,7 @@ def create_cookie(request: Request, response: Response):
     return {"message": "Wrong login"}
 @app.post("/welcome/")
 def create_cookie(*, response: Response, session: str = Cookie(None)):
-    return {"m": session}
     if (session != "abcd"):
-        return {"message": session}
+        raise HTTPException(status_code=401, detail="Unathorised")
     response.set_cookie(key="session", value=session)
     return {"message": "wow"}
