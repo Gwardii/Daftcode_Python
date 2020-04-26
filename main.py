@@ -14,7 +14,7 @@ Patients=[]
 @app.get("/")
 async def read_main():
     return {"message": "Hello World during the coronavirus pandemic!"}
-@app.get("/welcome/")
+@app.get("/wel/")
 async def get(x: Request):
     return {"message": x.headers['Cookie']}
 @app.post("/method/")
@@ -54,6 +54,6 @@ def create_cookie(request: Request, response: Response):
 @app.post("/welcome/")
 def create_cookie(*, response: Response, session: str = Cookie(None)):
     if (session != "dHJ1ZG5ZOlBhQzEzTnQ="):
-        raise HTTPException(status_code=403, detail="Unathorised")
+        raise HTTPException(status_code=401, detail="Unauthorised")
     response.set_cookie(key="session", value=session)
     
