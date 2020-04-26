@@ -10,7 +10,10 @@ security = HTTPBasic()
 app.secret_key = "very constatn and random secret, best 64 characters, here it is."
 
 session_tokens = []
-
+@app.get("/"):
+    return "Witaj!"
+@app.get("/welcome/"):
+    return "Witaj!"
 @app.post("/login")
 def get_current_user(response: Response, credentials: HTTPBasicCredentials = Depends(security)):
     correct_username = secrets.compare_digest(credentials.username, "trudnY")
@@ -27,5 +30,5 @@ def create_cookie(response: Response):
     response.set_cookie(key="session", value="fake-cookie-session-value")
     return {"message": "Come to the dark side, we have cookies"}
 @app.post("/welcome/")
-def create_cookie(*, response: Response, session: str = Cookie(None)):
-    return {"message": "witaj"}
+def create_cookie():
+    return
