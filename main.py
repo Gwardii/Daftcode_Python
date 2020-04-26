@@ -54,6 +54,6 @@ def create_cookie(request: Request, response: Response):
 @app.post("/welcome/")
 def create_cookie(*, response: Response, session: str = Cookie(None)):
     if (session != "abcd"):
-        raise HTTPException(status_code=401, detail=session)
+        return {"message": session}
     response.set_cookie(key="session", value=session)
-    return {"message": session}
+    return {"message": "wow"}
