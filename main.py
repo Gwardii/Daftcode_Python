@@ -48,7 +48,7 @@ def create_cookie(response: Response):
 def create_cookie(login: str, password: str, response: Response):
    if(login=='a and password=='a'):
        response.set_cookie(key="fake_session", value="fake-cookie-session-value")
-    if(login=='a' and password=='a'):
+   if(login=='a' and password=='a'):
         return RedirectResponse(url='/welcome/')
     
     return {"message": "Wrong login"}
