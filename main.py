@@ -5,7 +5,7 @@ from hashlib import sha256
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi import Depends
 import secrets
-
+app=FastAPI()
 security = HTTPBasic()
 app.secret_key = "very constatn and random secret, best 64 characters, here it is."
 
