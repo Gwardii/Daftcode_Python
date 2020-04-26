@@ -5,6 +5,12 @@ class Item(BaseModel):
     name: str
     surename: str
 
+ objects = {
+    1: {"field_a": "a", "field_b": "b"},
+    2: {"field_a": "a", "field_b": "b"},
+    3: {"field_a": "a", "field_b": "b"},
+    # .... #
+}
 
 app = FastAPI()
 
