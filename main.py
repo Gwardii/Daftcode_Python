@@ -40,13 +40,13 @@ async def fun(pk: int):
         raise HTTPException(status_code=204)
     patient=Patients[pk-1]
     return patient
-@app.get("/login/")
+@app.post("/login/")
 def create_cookie(login: str, password: str, response: Response):
     if(login=='trudnY' and password=='PaC13Nt'):
         response.set_cookie(key="session_token", value="fake-cookie-session-value")
         return RedirectResponse(url='/welcome/')
     return {"message": "Wrong login"}
-@app.get("/welcome/")
+@app.post("/welcome/")
 def create_cookie(*, response: Response, session_token: str = "nic"):
     if session_token != "fake-cookie-session-value":
         raise HTTPException(status_code=403, detail="Unathorised")
