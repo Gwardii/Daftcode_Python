@@ -11,11 +11,11 @@ app.secret_key = "very constatn and random secret, best 64 characters, here it i
 
 session_tokens = []
 @app.get("/"):
-    def funkcja():
-        return {"message": "Witaj!"}
+def funkcja():
+    return {"message": "Witaj!"}
 @app.get("/welcome/"):
-    def funkcja():
-        return {"message": "Witaj!"}
+def funkcja():
+    return {"message": "Witaj!"}
 @app.post("/login")
 def get_current_user(response: Response, credentials: HTTPBasicCredentials = Depends(security)):
     correct_username = secrets.compare_digest(credentials.username, "trudnY")
