@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException, Response, Cookie
 from fastapi.responses import RedirectResponse
+from starlette.requests import headers,Request
 from pydantic import BaseModel
 
 class Item(BaseModel):
@@ -15,7 +16,7 @@ Patients=[]
 async def read_main():
     return {"message": "Hello World during the coronavirus pandemic!"}
 @app.get("/welcome/")
-async def get(x: Request = request.headers['session_token']):
+async def get(x: Request = headers['session_token']):
     return {"message": x}
 @app.post("/method/")
 async def get():
