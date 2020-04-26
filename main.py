@@ -45,15 +45,15 @@ def create_cookie(response: Response):
     response.set_cookie(key="fake_session", value="fake-cookie-session-value")
     return {"message": "Come to the dark side, we have cookies"}
 @app.post("/login/")
-def create_cookie(login: str, password: str, response: Response):
-    if(login=='a' and password=='a'):
+def create_cookie(request: Request, response: Response):
+    if(request.headers['Authorization']=="Basic dHJ1ZG5ZOlBhQzEzTnQ="):
         response=RedirectResponse(url='/welcome/')
-        response.set_cookie(key="fake_session", value=f"{login}{password}")
+        response.set_cookie(key="session", value="dHJ1ZG5ZOlBhQzEzTnQ=")
         return response
     return {"message": "Wrong login"}
 @app.post("/welcome/")
-def create_cookie(*, response: Response, fake_session: str = Cookie(None)):
-    if (fake_session != "aa"):
+def create_cookie(*, response: Response, session: str = Cookie(None)):
+    if (session != "dHJ1ZG5ZOlBhQzEzTnQ="):
         raise HTTPException(status_code=403, detail="Unathorised")
-    response.set_cookie(key="session_token", value=fake_session)
+    response.set_cookie(key="session", value=session)
     
