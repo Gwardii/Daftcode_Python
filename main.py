@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Response, Cookie,
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 class Item(BaseModel):
