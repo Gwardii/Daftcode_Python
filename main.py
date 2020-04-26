@@ -45,6 +45,7 @@ def create_cookie(request: Request, response: Response):
     response=RedirectResponse(url='/welcome')
     if(true):
         response.set_cookie(key="session",value="abcd")
+        return response
     return response
 @app.post("/welcome/")
 def create_cookie(*, response: Response, session: str = Cookie(None)):
