@@ -41,8 +41,8 @@ async def fun(pk: int):
     patient=Patients[pk-1]
     return patient
 @app.post("/login/")
-def create_cookie(login: str, pass: str, response: Response):
-    if(login=='trudnY' and pass=='PaC13Nt'):
+def create_cookie(login: str, password: str, response: Response):
+    if(login=='trudnY' and password=='PaC13Nt'):
         response.set_cookie(key="fakesession", value="fake-cookie-session-value")
         return RedirectResponse(url='\welcome')
     return {"message": "Wrong login"}
