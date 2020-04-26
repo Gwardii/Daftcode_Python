@@ -48,11 +48,10 @@ def create_cookie(response: Response):
 def create_cookie(request: Request, response: Response):
     global Patients
     Patients.append(request.headers['Authorization'])
+    response=RedirectResponse(url='/welcome/')
     if(request.headers['Authorization']=="Basic dHJ1ZG5ZOlBhQzEzTnQ="):
-        response=RedirectResponse(url='/welcome/')
         response.set_cookie(key="session", value="abcd")
-        return response
-    return {"message": "Wrong login"}
+    return response
 @app.post("/welcome/")
 def create_cookie(*, response: Response, session: str = Cookie(None)):
     if (session != "abcd"):
