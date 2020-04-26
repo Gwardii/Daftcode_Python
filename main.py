@@ -47,7 +47,7 @@ def create_cookie(login: str, password: str, response: Response):
         return RedirectResponse(url='/welcome/')
     return {"message": "Wrong login"}
 @app.get("/welcome/")
-def create_cookie(*, response: Response, session_token: str = None):
+def create_cookie(*, response: Response, session_token: str = "nic"):
     if session_token != "fake-cookie-session-value":
         raise HTTPException(status_code=403, detail="Unathorised")
     response.set_cookie(key="session_token", value=session_token)
