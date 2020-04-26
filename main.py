@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Response
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 
 class Item(BaseModel):
