@@ -11,9 +11,11 @@ app.secret_key = "very constatn and random secret, best 64 characters, here it i
 
 session_tokens = []
 @app.get("/"):
-    return {"message": "Witaj!"}
+    def funkcja():
+        return {"message": "Witaj!"}
 @app.get("/welcome/"):
-    return {"message": "Witaj!"}
+    def funkcja():
+        return {"message": "Witaj!"}
 @app.post("/login")
 def get_current_user(response: Response, credentials: HTTPBasicCredentials = Depends(security)):
     correct_username = secrets.compare_digest(credentials.username, "trudnY")
@@ -31,4 +33,4 @@ def create_cookie(response: Response):
     return {"message": "Come to the dark side, we have cookies"}
 @app.post("/welcome/")
 def create_cookie():
-    return None
+    return {"a": "a"}
