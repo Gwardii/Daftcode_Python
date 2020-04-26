@@ -39,11 +39,4 @@ async def fun(pk: int):
         raise HTTPException(status_code=204)
     patient=Patients[pk-1]
     return patient
-@app.post("/login/")
-def create_cookie(login: str, pass: str, response: Response):
-    if(login==trudnY and pass==PaC13Nt):
-        session_token = sha256(bytes(f"{login}{pass}{app.secret_key}")).hexdigest()
-        global Database.append(session_token)
-        response.set_cookie(key="session_token", value=session_token)
-        return RedirectResponse(url='\welcome')
-    return {"message": "Wrong login"}
+
