@@ -53,7 +53,7 @@ def create_cookie(login: str, password: str, response: Response):
     return {"message": "Wrong login"}
 @app.post("/welcome/")
 def create_cookie(*, response: Response, fake_session: str = "nic"):
-    if (fake_session == "fake-cookie-session-value"):
+    if (fake_session == "nic"):
         raise HTTPException(status_code=403, detail="Unathorised")
     response.set_cookie(key="session_token", value=fake_session)
     
