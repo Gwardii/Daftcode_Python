@@ -39,3 +39,8 @@ async def fun(pk: int):
         raise HTTPException(status_code=204)
     patient=Patients[pk-1]
     return patient
+@app.get("/simple_path_tmpl/{obj_id}/{field}}")
+def simple_path_tmpl(obj_id: int, field: str):
+    print(f"{obj_id=}")
+    print(f"{field=}")
+    return {"field": objects.get(obj_id, {}).get(field)}
